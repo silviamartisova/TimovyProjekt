@@ -1,10 +1,11 @@
 import socket
 
 # Server address and port
-server_address = ('localhost', 12345)
+server_address = ('172.17.0.2', 12345)
 
 # Path to the photo you want to send
-photo_path = r"C:\Skola_LS_23\Tymovy projekt\TestovacieFotky\RealSensePic0.jpg"
+# C:\Skola_LS_23\Tymovy projekt\TestovacieFotky
+photo_path = r"D:\School\TimovyProjekt\TimovyProjekt\TestovacieFotky\RealSensePic0.jpg"
 
 # Read the photo file as binary data
 with open(photo_path, 'rb') as file:

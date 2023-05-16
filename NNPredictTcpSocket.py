@@ -3,7 +3,9 @@ import cv2
 import numpy as np
 import socket
 from datetime import datetime
-from CONSTANTS import image_width, image_height
+
+image_width = 64
+image_height = 64
 
 # Load the saved model from the file
 model = tf.keras.models.load_model('my_model.h5')
