@@ -1,3 +1,4 @@
+Nemazat {
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' Dockerfile
 
 
@@ -5,3 +6,22 @@ ziska IP adresu daneho zariadenia na ktorm bezi docker
 docker port <Dockerfile>
 
 docker inspect Dockerfile
+
+
+docker inspect Dockerfile | Select-String -Pattern "IPAddress"
+zisti ipcku
+
+Toto som dal
+docker build -t my_image_name .
+
+}
+------------------------------------------
+{ Podstatne }
+Buildi to cez pycharm
+
+Vybuildi docker :
+docker build -t myimage -f Dockerfile .
+
+spusti a zaroven otvor porty :
+docker run -p 12345:12345 myimage
+

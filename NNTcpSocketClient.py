@@ -1,7 +1,7 @@
 import socket
 
 # Server address and port
-server_address = ('172.17.0.2', 12345)
+server_address = ('127.0.0.1', 12345)
 
 # Path to the photo you want to send
 # C:\Skola_LS_23\Tymovy projekt\TestovacieFotky
@@ -21,7 +21,8 @@ print('Connected to server:', server_address)
 try:
     # Send the photo data to the server
     client_socket.sendall(photo_data)
-
+except Exception as e:
+    print(e)
 finally:
     # Close the client socket
     client_socket.close()

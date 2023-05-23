@@ -33,13 +33,14 @@ def preprocess_photo(photo):
 
 # Set up TCP socket server
 def run_socket_server():
+    print("Inside")
     # Create a TCP socket
     # The prediction will be a probability value, you can interpret it accordingly
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Bind the socket to a specific address and port
-    server_address = ('localhost', 12345)
+    server_address = ('0.0.0.0', 12345)
     server_socket.bind(server_address)
 
     # Listen for incoming connections
