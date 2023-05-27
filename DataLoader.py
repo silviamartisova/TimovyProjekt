@@ -74,7 +74,8 @@ batch_size = 32
 num_channels = 1
 train_images, train_labels, test_images, test_labels = DataSplitter.SplitToTestAndTrain(all_images, all_labels)
 
-
+def leaky_relu(x):
+    return tf.nn.leaky_relu(x)
 
 # Define the neural network architecture
 def create_model():
@@ -91,9 +92,25 @@ def create_model():
 
     return model
 
+# Define the neural network architecture
+def create_model2():
+    model = tf.keras.Sequential([
+        # Input layer
+        tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(image_width, image_height, num_channels)),
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+        tf.keras.layers.Flatten(),
+        # Hidden layers
+        tf.keras.layers.Dense(64, activation='relu'),
+        tf.keras.layers.Dense(64, activation=leaky_relu),
+        # Output layer
+        tf.keras.layers.Dense(1, activation='sigmoid')
+    ])
+
+    return model
+
 
 # Create the model
-model = create_model()
+model = create_model2()
 
 # Compile the model
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
@@ -107,7 +124,7 @@ print(f"Test Loss: {loss:.4f}")
 print(f"Test Accuracy: {accuracy:.4f}")
 
 # After training the model, save it to a file
-model.save('my_model.h5')
+model.save('my_model2.h5')
 # # Make predictions
 # predictions = model.predict(test_images)
 

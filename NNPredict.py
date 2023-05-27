@@ -5,6 +5,8 @@ from CONSTANTS import image_width, image_height
 
 # Load the saved model from the file
 model = tf.keras.models.load_model('my_model.h5')
+# model = tf.keras.models.load_model('my_model2.h5')
+
 
 
 # Preprocess a single photo
