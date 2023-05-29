@@ -3,6 +3,9 @@ import cv2
 import numpy as np
 import socket
 from datetime import datetime
+from tkinter.messagebox import showerror
+
+import snap7
 
 image_width = 64
 image_height = 64
@@ -86,6 +89,11 @@ def run_socket_server():
                 # The prediction will be a probability value, you can interpret it accordingly
                 current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 print(f"[{current_time}] Binary Prediction:", prediction_binary)
+                if prediction_binary:
+                    send_data_from_server_to_plc()
+                    print("The LED light is turned ON for 5 seconds !")
+                else:
+                    print("The Binary Prediction is 0 -> communication with PLC not necessary.")
 
             except Exception as e:
                 print(f"[{current_time}] Error occurred:", str(e))
@@ -96,6 +104,20 @@ def run_socket_server():
     except KeyboardInterrupt:
         print('Server stopped by keyboard interrupt')
         server_socket.close()
+
+
+def send_data_from_server_to_plc():
+    plc = snap7.client.Client()
+    IP_ADDRESS = '10.7.14.111'
+    db_to_write = True
+
+    try:
+        plc.connect(IP_ADDRESS, 0, 1)
+        plc.db_write(db_number=db_to_write, start=0, data=bytearray([1]))  # Write 1 to DB1 at offset 0
+        plc.disconnect()  # Disconnect from the PLC
+        print("Value 1 sent to DB1 successfully.")
+    except snap7.snap7exceptions.Snap7Exception as e:
+        showerror(title='Error', message=str(e))
 
 
 # Run the socket server
