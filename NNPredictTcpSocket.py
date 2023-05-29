@@ -1,11 +1,11 @@
 import tensorflow as tf
 import cv2
+import snap7
 import numpy as np
 import socket
 from datetime import datetime
 from tkinter.messagebox import showerror
 
-import snap7
 
 image_width = 64
 image_height = 64
@@ -115,7 +115,7 @@ def send_data_from_server_to_plc():
         plc.connect(IP_ADDRESS, 0, 1)
         plc.db_write(db_number=db_to_write, start=0, data=bytearray([1]))  # Write 1 to DB1 at offset 0
         plc.disconnect()  # Disconnect from the PLC
-        print("Value 1 sent to DB1 successfully.")
+        print("Value True sent to DB1 successfully.")
     except snap7.snap7exceptions.Snap7Exception as e:
         showerror(title='Error', message=str(e))
 
