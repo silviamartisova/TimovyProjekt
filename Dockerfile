@@ -13,6 +13,15 @@ COPY . /app
 
 # Install the required dependencies
 RUN pip install tensorflow opencv-python numpy
+RUN apt update \
+    && apt install -y software-properties-common python3-pip \
+    && add-apt-repository ppa:gijzelaar/snap7 \
+    && apt update \
+    && apt install -y libsnap7-dev libsnap7-1 \
+
+RUN apt install python-snap7  - ????
+RUN pip3 install .
+
 
 # Expose port 12345 for the socket server
 EXPOSE 12345
