@@ -1,0 +1,36 @@
+------------------------------------------
+Odporucam buildit DockerFile prostredníctvom Pycharmu
+
+Postup:
+
+1. nainstalujte si Docker Desktop
+2. nainstalujte si python 3.11 a python 3.10
+3. do python 3.11 si nainstalujte   tensorflow
+                                    opencv-python
+                                    numpy
+4. nainstalujte si potrebné package z DockerFile suboru
+5. nakonfigurujtev Pycharme konfiguráciu na základe DockerConfig.ong
+6. spustite DockerConfiguraciu
+
+7. Po uspesnom vybuildeni mame live docker container s live NN
+
+--------------------------------------------------------------------------------------
+Pri potrebe buildenia DockerFile mimo vývojového prostredia Pycharm :
+
+1. Vybuildi docker :    docker build -t myimage -f Dockerfile .
+2. Spusti a zaroven otvor porty :   docker run -p 12345:12345 myimage
+--------------------------------------------------------------------------------------
+
+Spustenie systému :
+
+1. Zbuildi Docker
+2. Zapni docker - na dockeri sa nachádza server
+3. Zapni TiaPortál project do rezimu online
+4. Nastav kameru na snímaný objekt
+5. Spusti script picture_sender_client.py
+
+--------------------------------------------------------------------------------------
+( vsetky devices ktore sa podielaju na behu projektu musia byt zapojene v eth sieti
+prostredníctvom eth kábla, ak prepojenie je robené iným spôsobom, je potrbené pozmeniť adresy )
+
+
