@@ -31,7 +31,7 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 photo_path = r"C:\Skola_LS_23\Tymovy projekt\TestovacieFotky\RealSensePic.jpg"
 
 while True:
-    time.sleep(1)
+    time.sleep(8)
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     client_socket.connect(server_address)

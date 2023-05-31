@@ -20,4 +20,4 @@ RUN pip install tensorflow opencv-python numpy python-snap7
 EXPOSE 12345
 
 # Run the script when the container starts
-CMD [ "python", "NNPredictTcpSocket.py" ]
+CMD [ "python", "nn_predict_tcp_socket.py" ]
