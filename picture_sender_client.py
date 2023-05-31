@@ -52,8 +52,8 @@ while True:
     with open(photo_path, 'rb') as file:
         photo_data = file.read()
 
-    # Send the photo data to the server
-    client_socket.sendall(photo_data)
+        # Send the photo data to the server
+        client_socket.sendall(photo_data)
 
     # finally:
     # Close the client socket
