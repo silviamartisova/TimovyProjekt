@@ -37,11 +37,8 @@ def load_and_preprocess_images(directory, label):
     return images, labels
 
 
-correct_object_dir = r"C:\Skola_LS_23\Tymovy projekt\Spravne"
-incorrect_object_dirs = [r"C:\Skola_LS_23\Tymovy projekt\Nespravne", r"C:\Skola_LS_23\Tymovy projekt\Nespravne2",
-                         r"C:\Skola_LS_23\Tymovy projekt\Nespravne3", r"C:\Skola_LS_23\Tymovy projekt\Nespravne4",
-                         r"C:\Skola_LS_23\Tymovy projekt\Nespravne5", r"C:\Skola_LS_23\Tymovy projekt\Nespravne6",
-                         r"C:\Skola_LS_23\Tymovy projekt\Nespravne7", r"C:\Skola_LS_23\Tymovy projekt\Nespravne8"]
+correct_object_dir = r"D:\School\TimovyProjekt\Spravne"
+incorrect_object_dirs = [r"D:\School\TimovyProjekt\Nespravne1"]
 
 # Load and preprocess correct object images
 correct_images, correct_labels = load_and_preprocess_images(correct_object_dir, 1)
@@ -74,7 +71,7 @@ print("All data loaded!")
 num_epochs = 10
 batch_size = 32
 num_channels = 1
-train_images, train_labels, test_images, test_labels = DataSplitter.split_to_test_and_train(all_images, all_labels)
+train_images, train_labels, test_images, test_labels = data_splitter.split_to_test_and_train(all_images, all_labels)
 
 
 def leaky_relu(x):
@@ -106,6 +103,20 @@ def create_model2():
         tf.keras.layers.Flatten(),
         # Hidden layers
         tf.keras.layers.Dense(64, activation='relu'),
+        tf.keras.layers.Dense(32, activation=leaky_relu),
+        # Output layer
+        tf.keras.layers.Dense(1, activation='sigmoid')
+    ])
+
+    return model
+
+def create_model3():
+    model = tf.keras.Sequential([
+        # Input layer
+        tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(image_width, image_height, num_channels)),
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+        tf.keras.layers.Flatten(),
+        # Hidden layers
         tf.keras.layers.Dense(64, activation=leaky_relu),
         # Output layer
         tf.keras.layers.Dense(1, activation='sigmoid')
@@ -129,6 +140,6 @@ print(f"Test Loss: {loss:.4f}")
 print(f"Test Accuracy: {accuracy:.4f}")
 
 # After training the model, save it to a file
-model.save('my_model2.h5')
+model.save('neural_network.h5')
 # # Make predictions
 # predictions = model.predict(test_images)

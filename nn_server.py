@@ -11,7 +11,7 @@ image_width = 64
 image_height = 64
 
 # Load the saved model from the file
-model = tf.keras.models.load_model('my_model.h5')
+model = tf.keras.models.load_model('neural_network.h5')
 
 
 # Preprocess a single photo
@@ -36,7 +36,6 @@ def preprocess_photo(photo):
 
 # Set up TCP socket server
 def run_socket_server():
-    print("Inside")
     # Create a TCP socket
     # The prediction will be a probability value, you can interpret it accordingly
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -80,7 +79,7 @@ def run_socket_server():
                 # The prediction will be a probability value, you can interpret it accordingly
                 print("Prediction:", prediction)
                 # Set the threshold value
-                threshold = 0.5
+                threshold = 0.9
 
                 # Convert the prediction to 0 or 1 based on the threshold
                 prediction_binary = 1 if prediction[0][0] >= threshold else 0

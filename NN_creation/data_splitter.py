@@ -3,7 +3,7 @@ import numpy as np
 
 def split_to_test_and_train(all_images, all_labels):
     # Split the data into training and testing sets
-    split_ratio = 0.8  # 80% for training, 20% for testing
+    split_ratio = 0.85  # 85% for training, 15% for testing
     split_idx = int(len(all_images) * split_ratio)
 
     train_images = all_images[:split_idx]
