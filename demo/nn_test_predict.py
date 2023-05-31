@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # Load the saved model from the file
-model = tf.keras.models.load_model('my_model.h5')
+model = tf.keras.models.load_model('../my_model.h5')
 # model = tf.keras.models.load_model('my_model2.h5')
 
 image_width = 64

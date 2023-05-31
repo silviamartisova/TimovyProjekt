@@ -1,5 +1,0 @@
-tensorflow
-opencv-python
-numpy
-python-snap7
-snap7
