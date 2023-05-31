@@ -6,8 +6,9 @@ import socket
 import time
 
 # Server address and port
-server_address = ('localhost', 12345)
-
+# '0.0.0.0', 12345
+# r"D:\School\TimovyProjekt\TimovyProjekt\TestovacieFotky\RealSensePic0.jpg"
+server_address = ('0.0.0.0', 12345)
 
 directory = r"C:\Skola_LS_23\Tymovy projekt\TestovacieFotky"
 if not os.path.exists(directory):
@@ -47,8 +48,6 @@ while True:
     filename = os.path.join(directory, "RealSensePic.jpg")
     cv2.imwrite(filename, color_image)
 
-
-
     # Read the photo file as binary data
     with open(photo_path, 'rb') as file:
         photo_data = file.read()
@@ -57,7 +56,7 @@ while True:
     client_socket.sendall(photo_data)
 
     # finally:
-        # Close the client socket
+    # Close the client socket
     client_socket.close()
     client_socket = None
 
